@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>INKVERSE — Comic Universe</title>
+<meta name="description" content="INKVERSE — красивый каталог комиксов Marvel, DC и других издательств.">
+<style>
+:root{--bg:#07070e;--panel:#12121f;--panel2:#19192b;--text:#f1f3ff;--muted:#9da3c3;--line:#292940;--red:#ff3b5c;--violet:#8b5cf6;--blue:#4d7cff;--gold:#ffc24b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(900px 500px at 90% -10%,#8b5cf622,transparent 65%),radial-gradient(800px 500px at -10% 30%,#ff3b5c18,transparent 65%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+button,input{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+header{position:sticky;top:0;z-index:50;background:#07070ed9;backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{max-width:1250px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:18px}.logo{font-size:22px;font-weight:950;letter-spacing:3px;background:linear-gradient(120deg,var(--red),var(--violet),var(--blue));color:transparent;background-clip:text;white-space:nowrap}
+nav .links{display:flex;gap:4px;flex:1;overflow:auto}nav .links a{padding:9px 12px;color:var(--muted);border-radius:10px;font-size:14px;font-weight:700;white-space:nowrap}nav .links a:hover{background:#ffffff0d;color:white}
+.lang{border:1px solid var(--line);background:transparent;color:white;border-radius:10px;padding:8px 11px;font-weight:800}
+main{max-width:1250px;margin:auto;padding:24px 20px 80px}.hero{min-height:450px;border:1px solid var(--line);border-radius:28px;overflow:hidden;display:flex;align-items:end;padding:48px;background:linear-gradient(115deg,#3a1022,#18143c 55%,#101c3c);position:relative;box-shadow:0 25px 80px #0008}.hero:before{content:"";position:absolute;width:650px;height:650px;right:-160px;top:-250px;background:radial-gradient(circle,#8b5cf666,transparent 65%)}.hero:after{content:"✦";position:absolute;right:12%;top:18%;font-size:180px;font-weight:900;color:#ffffff12;transform:rotate(-15deg)}.hero>div{position:relative;z-index:1;max-width:700px}.tag{display:inline-block;padding:7px 13px;border:1px solid #ff3b5c77;background:#ff3b5c22;color:#ffb0bc;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:2px}.hero h1{font-size:clamp(40px,7vw,76px);line-height:1;margin:16px 0}.hero p{color:#cdd1e9;line-height:1.7;font-size:16px;max-width:610px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.btn{border:0;border-radius:13px;padding:13px 21px;font-weight:900;background:linear-gradient(120deg,var(--red),var(--violet));color:white}.btn.alt{background:#ffffff10;border:1px solid var(--line)}
+.section{margin-top:42px}.title{font-size:30px;font-weight:950;margin-bottom:6px}.sub{color:var(--muted);margin-bottom:20px}.search{display:flex;gap:10px;margin:28px 0}.search input{flex:1;background:var(--panel);border:1px solid var(--line);color:white;border-radius:15px;padding:16px 18px;outline:none}.search input:focus{border-color:#8b5cf6aa;box-shadow:0 0 0 4px #8b5cf622}.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}.filters button{border:1px solid var(--line);background:var(--panel);color:#c9cdea;padding:9px 13px;border-radius:10px}.filters button.active{background:#8b5cf633;border-color:#8b5cf688;color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.3s;cursor:pointer}.card:hover{transform:translateY(-7px);border-color:#8b5cf677;box-shadow:0 22px 55px #0009}.cover{aspect-ratio:2/3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.cover img{width:100%;height:100%;object-fit:cover}.cover .letter{font-size:75px;font-weight:950;font-style:italic;text-shadow:0 8px 35px #0009}.badge{position:absolute;top:10px;left:10px;background:#0009;border:1px solid #ffffff33;padding:5px 8px;border-radius:8px;font-size:10px;font-weight:900}.body{padding:14px}.body h3{margin:0 0 7px;font-size:16px}.meta{font-size:12px;color:var(--muted)}.rating{color:var(--gold);font-size:13px;font-weight:900;margin-top:9px}.empty{text-align:center;padding:60px;color:var(--muted)}
+.modal{position:fixed;inset:0;background:#000b;backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:100;padding:18px}.modal.show{display:flex}.dialog{width:min(900px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px;position:relative}.close{position:absolute;right:15px;top:15px;border:1px solid var(--line);background:#ffffff0d;color:white;border-radius:10px;padding:8px 12px}.detail{display:grid;grid-template-columns:280px 1fr;gap:25px}.detail-cover{border-radius:16px;overflow:hidden;aspect-ratio:2/3;background:linear-gradient(145deg,#8b5cf6,#17142f);display:flex;align-items:center;justify-content:center;font-size:80px;font-weight:950}.detail-cover img{width:100%;height:100%;object-fit:cover}.detail h2{font-size:38px;margin:0 45px 10px 0}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{padding:6px 10px;border-radius:999px;background:#4d7cff22;color:#aec0ff;border:1px solid #4d7cff55;font-size:12px}.readbox{margin-top:20px;padding:20px;background:#0b0b15;border:1px solid var(--line);border-radius:16px}.readbox h3{margin-top:0}.pages{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.page{min-height:220px;border-radius:10px;background:linear-gradient(135deg,#20203a,#0d0d18);display:flex;align-items:center;justify-content:center;color:#777;font-weight:800}.notice{font-size:12px;color:var(--muted);line-height:1.6}
+footer{border-top:1px solid var(--line);padding:30px 20px;text-align:center;color:var(--muted)}@media(max-width:700px){.links{display:none}.hero{padding:30px;min-height:420px}.detail{grid-template-columns:1fr}.detail-cover{max-width:280px;margin:auto}.pages{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><nav class="nav"><div class="logo">INKVERSE</div><div class="links">
+<a href="#home">Главная</a><a href="#catalog">Каталог</a><a href="#marvel">Marvel</a><a href="#dc">DC</a><a href="#other">Другие</a>
+</div><button class="lang" id="lang">EN</button></nav></header>
+<main id="home">
+<section class="hero"><div><span class="tag">COMIC UNIVERSE</span><h1>Открой свою вселенную комиксов</h1><p>Красивый каталог с поиском, карточками героев и подробными страницами комиксов. Нажми на любую карточку, чтобы открыть информацию и доступные легальные материалы.</p><div class="actions"><a class="btn" href="#catalog">Смотреть каталог</a><button class="btn alt" onclick="showInfo()">Как это работает</button></div></div></section>
+<section id="catalog" class="section"><div class="title">Каталог комиксов</div><div class="sub">Marvel, DC и другие издательства</div>
+<div class="search"><input id="search" placeholder="Поиск: Spider-Man, Batman, Avengers…"><button class="btn" onclick="filter()">Найти</button></div>
+<div class="filters" id="filters"><button class="active" onclick="setPub('all',this)">Все</button><button onclick="setPub('Marvel',this)">Marvel</button><button onclick="setPub('DC',this)">DC</button><button onclick="setPub('Other',this)">Другие</button></div>
+<div class="grid" id="grid"></div></section>
+</main>
+<div class="modal" id="modal"><div class="dialog"><button class="close" onclick="closeModal()">✕</button><div id="modalContent"></div></div></div>
+<footer><div class="logo">INKVERSE</div><p>Каталог использует демонстрационные данные. Не размещаются полные пиратские копии защищённых комиксов.</p></footer>
+<script>
+const comics=[
+{id:1,title:"Spider-Man",pub:"Marvel",year:2025,rating:"9.2",desc:"Каталоговая карточка о Человеке-пауке и его историях.",letter:"S",g:["Action","Superhero"]},
+{id:2,title:"Avengers",pub:"Marvel",year:2024,rating:"8.9",desc:"Команда героев Marvel и связанные серии.",letter:"A",g:["Team","Superhero"]},
+{id:3,title:"X-Men",pub:"Marvel",year:2024,rating:"8.7",desc:"Мутанты, команды и истории вселенной X-Men.",letter:"X",g:["Mutants","Team"]},
+{id:4,title:"Venom",pub:"Marvel",year:2025,rating:"8.5",desc:"Истории Венома и симбиота.",letter:"V",g:["Antihero","Action"]},
+{id:5,title:"Batman",pub:"DC",year:2025,rating:"9.1",desc:"Готэм, Бэтмен и его противостояния.",letter:"B",g:["Crime","Hero"]},
+{id:6,title:"Superman",pub:"DC",year:2025,rating:"8.8",desc:"Истории Супермена и Метрополиса.",letter:"S",g:["Hero","Action"]},
+{id:7,title:"The Flash",pub:"DC",year:2024,rating:"8.6",desc:"Скорость, герои и события DC.",letter:"F",g:["Speed","Hero"]},
+{id:8,title:"Wonder Woman",pub:"DC",year:2024,rating:"8.9",desc:"Диана Принс и мифологический мир DC.",letter:"W",g:["Hero","Myth"]},
+{id:9,title:"Spawn",pub:"Other",year:2024,rating:"8.4",desc:"Комикс Image Comics для раздела других издателей.",letter:"SP",g:["Dark","Action"]},
+{id:10,title:"Hellboy",pub:"Other",year:2023,rating:"8.6",desc:"Демон, расследования и сверхъестественные истории.",letter:"H",g:["Horror","Hero"]}
+];
+let pub="all";
+function render(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ const list=comics.filter(c=>(pub==="all"||c.pub===pub)&&(!q||(c.title+" "+c.pub+" "+c.g.join(" ")).toLowerCase().includes(q)));
+ grid.innerHTML=list.length?list.map(c=>`<article class="card" onclick="openComic(${c.id})"><div class="cover" style="background:linear-gradient(145deg,${c.pub==='Marvel'?'#8e1730':c.pub==='DC'?'#174f98':'#633a86'},#101020)"><span class="badge">${c.pub}</span><span class="letter">${c.letter}</span></div><div class="body"><h3>${c.title}</h3><div class="meta">${c.year} • ${c.pub}</div><div class="rating">★ ${c.rating}</div></div></article>`).join(""):`<div class="empty">Ничего не найдено. Попробуй другое название.</div>`;
+}
+function filter(){render()}
+function setPub(x,b){pub=x;document.querySelectorAll(".filters button").forEach(v=>v.classList.remove("active"));b.classList.add("active");render()}
+function openComic(id){
+ const c=comics.find(x=>x.id===id);
+ modalContent.innerHTML=`<div class="detail"><div class="detail-cover" style="background:linear-gradient(145deg,${c.pub==='Marvel'?'#9d1935':c.pub==='DC'?'#174f98':'#633a86'},#101020)">${c.letter}</div><div><h2>${c.title}</h2><p class="meta">${c.pub} • ${c.year} • ★ ${c.rating}</p><p style="line-height:1.7;color:#c9cdea">${c.desc}</p><div class="chips">${c.g.map(x=>`<span class="chip">${x}</span>`).join("")}</div><div class="readbox"><h3>Чтение</h3><p class="notice">Здесь показываются только легально доступные материалы или превью. Полные защищённые сканы комиксов не встроены.</p><div class="pages"><div class="page">PREVIEW 01</div><div class="page">PREVIEW 02</div></div></div></div></div>`;
+ modal.classList.add("show");
+}
+function closeModal(){modal.classList.remove("show")}
+function showInfo(){alert("Выбирай комикс → открывается подробная страница → смотри информацию и доступные материалы.")}
+document.getElementById("search").addEventListener("keydown",e=>{if(e.key==="Enter")render()});
+render();
+</script>
+</body></html>
